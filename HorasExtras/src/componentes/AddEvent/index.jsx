@@ -11,14 +11,26 @@ function AddEvent() {
   
 
   const addEvent = (name,date) => {
+    const mes = new Date(date)
+    const mesNumber = mes.getMonth();
     const id = Math.floor(Math.random() * 100000)
-    const event = {id,name,date}
+    const event = {mes: mesNumber,events: [{id,name}]}
+    
 
     
     const arrayRecuperado = JSON.parse(localStorage.getItem('events'))
-    console.log(arrayRecuperado)
     if(arrayRecuperado){
-      arrayRecuperado.push(event)
+      
+      const foundMoth = arrayRecuperado.find( item => item.mes === mesNumber)
+
+      if(foundMoth){
+        const newEvent = {id,name}
+        foundMoth.events.push(newEvent)
+      }else{
+        arrayRecuperado.push(event)
+      }
+      
+
 
     localStorage.setItem('events', JSON.stringify(arrayRecuperado))
     }else{

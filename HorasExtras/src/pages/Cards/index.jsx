@@ -4,7 +4,10 @@
 const Cards = () => {
     return(
         <>
-        <h1>Mes</h1>
+        <div className="bg-gray-800 h-screen w-screen">
+            
+        </div>
+        
         </>
     )
 }
