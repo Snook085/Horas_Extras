@@ -1,49 +1,63 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 
 function AddEvent() {
   const [nameEvent, setNameEvent] = useState('')
   const [dateEvent, setDateEvent] = useState('')
-  const [eventList, setEventList] = useState([])
+  
   const [save,setSave] = useState(false)
+
+  
+
   const addEvent = (name,date) => {
     const id = Math.floor(Math.random() * 100000)
     const event = {id,name,date}
-    setEventList((state) => [...state,event])
 
+    
+    const arrayRecuperado = JSON.parse(localStorage.getItem('events'))
+    console.log(arrayRecuperado)
+    if(arrayRecuperado){
+      arrayRecuperado.push(event)
+
+    localStorage.setItem('events', JSON.stringify(arrayRecuperado))
+    }else{
+      localStorage.setItem('events', JSON.stringify([event]))
+    }
     
   }
 
-  const remove = (id) => {
-    setEventList((state) => state.filter(event => event.id !== id))
-  }
+  
 
   function handleSave (e) {
     e.preventDefault()
     addEvent(nameEvent,dateEvent)
-    setSave(true)
+    
     
     
     console.log(nameEvent,dateEvent)
-    console.log(eventList)
+    
   }
 
   return (
     <>
-      <div className='bg-gray-900 h-screen p-5'>
-        <h1 className='text-white text-2xl'>Horas extras</h1>
-        <form className='mt-5' onSubmit={handleSave}>
-          <div>
-            <label className='text-white ' htmlFor="name">Nome Evento:</label>
-            <input className='ml-3 rounded' 
+    <div className='flex flex-col h-screen w-screen bg-slate-800 justify-center items-center '>
+
+    
+      <div className=' bg-white  p-5  flex flex-col items-center justify-center rounded-xl shadow-xl'>
+        <h1 className=' text-2xl'>Horas extras</h1>
+        <form className='mt-5 flex flex-col gap-5 items-center justify-center' onSubmit={handleSave}>
+          <div className='flex flex-col gap-3'>
+            <label  htmlFor="name" className='text-sm font-bold'>Nome Evento:</label>
+            <input className='ml-3 rounded border-2 border-black h-10 w-56' 
             type="text"
             value={nameEvent}
             onChange={(e) => setNameEvent(e.target.value)}
             />
           </div>
-          <div className='mt-2'>
-            <label className='text-white ' htmlFor="name">Data do Evento:</label>
-            <input className='ml-3 rounded'
+          <div className='mt-2 flex flex-col gap-3'>
+            <label  htmlFor="name" className='text-sm font-bold' >Data do Evento:</label>
+            <input className='ml-3 rounded border-2 border-black h-10 w-56'
              type="date"
              value={dateEvent}
              onChange={(e) => setDateEvent(e.target.value)}
@@ -52,23 +66,16 @@ function AddEvent() {
         
             <div className='flex gap-1'>
                 <button className='text-white bg-sky-700 rounded-xl mt-4 p-2' type='submit'>Salvar Evento</button>
-          <button className='text-white bg-sky-700 rounded-xl mt-4 p-2' type='click'>Voltar Para Inicio</button>
+                <Link className='text-white bg-sky-700 rounded-xl mt-4 p-2' type='click' to='/'>Voltar Inicio</Link>
             </div>
           
         </form>
 
         <div>
-            {save ? <p className='text-green-500'>Evento Salvo Com Sucesso</p> : null}
-        </div>
-
-        <div>
-          {eventList.map(event => (
-            <div key={event.id}><h1>{event.name}</h1>
-              <button  onClick={() => remove(event.id)}>Remove</button>
-            </div>
-          ))}
+            {save ? <p className='text-green-500 mt-5 font-bold'>Evento Salvo Com Sucesso</p> : null}
         </div>
         
+      </div>
       </div>
     </>
   )
