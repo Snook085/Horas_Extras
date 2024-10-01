@@ -1,27 +1,35 @@
+import './index.css';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import AddEvent from './componentes/AddEvent';
+import InicialPage from './pages/inicio';
+import VerEvent from './pages/VerEvent';
 
-import './index.css'
-import {BrowserRouter as Router, Route,  Routes} from 'react-router-dom'
-import AddEvent from './componentes/AddEvent'
-import InicialPage from './pages/inicio'
-import VerEvent from './pages/VerEvent'
-import Cards from './pages/Cards'
+import Menu from './componentes/Navigation';
+import { useState } from 'react';
+import Month from './pages/Month';
 
-function App() {
-  
+const App = () => {
+  const location = useLocation(); // Usar useLocation aqui, dentro do Router
+  const [currentScreen, setCurrentScreen] = useState(location.pathname); // Estado para a tela atual
+
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path='/' element={<InicialPage/>} />
-          <Route path='/AddEvent'  element={<AddEvent/>} />
-          <Route path='/MesEvent'  element={<Cards/>} />
-          <Route path='/VerEvent'  element={<VerEvent/>} />
-        </Routes>
-        
-      </Router>
-      
+      <Routes>
+        <Route path='/' element={<InicialPage />} />
+        <Route path='/AddEvent' element={<AddEvent />} />
+        <Route path='/MesEvent' element={<Month />} />
+        <Route path='/VerEvent/:id' element={<VerEvent />} />
+      </Routes>
+      <Menu currentScreen={currentScreen} setCurrentScreen={setCurrentScreen} />
     </>
-  )
-}
+  );
+};
 
-export default App
+// Componente Wrapper que inclui o Router
+const WrappedApp = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default WrappedApp;

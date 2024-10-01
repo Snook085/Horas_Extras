@@ -11,11 +11,35 @@ function AddEvent() {
   
 
   const addEvent = (name,date) => {
+
+
+
+
+    
     const mes = new Date(date)
     const mesNumber = mes.getMonth();
     const id = Math.floor(Math.random() * 100000)
-    const event = {mes: mesNumber,events: [{id,name}]}
     
+    
+
+    const mesNames = [
+      'janeiro',
+      'fevereiro',
+      'março',
+      'abril',
+      'maio',
+      'junho',
+      'julho',
+      'agosto',
+      'setembro',
+      'outubro',
+      'novembro',
+      'dezembro'
+    ];
+
+    const mesName = mesNames[mesNumber]
+    
+    const event = {mes: mesName,events: [{id,name}],id: mesNumber}
 
     
     const arrayRecuperado = JSON.parse(localStorage.getItem('events'))

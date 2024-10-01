@@ -1,38 +1,30 @@
-import { useState } from "react";
+import { useParams } from "react-router-dom"
+
 
 
 
 
 const VerEvent = () => {
+    const params = useParams()
+    console.log('params: ',JSON.stringify(params))
+    const {id} = useParams();
+    const dados = JSON.parse(localStorage.getItem('events')) 
 
-    
-    const dados = JSON.parse(localStorage.getItem('events'))
 
-    if(!dados){
-        localStorage.setItem('events',JSON.stringify([{mes:'0' ,events:{name:'Sem Eventos'}}]))
-    }
+    const mesEncontrado = dados.find(item => item.id == id)
 
-    function removeEvent(id){
-        if(dados){
-            const removido = dados.filter((item) => item.events.id !== id)
-            console.log(removido)
-            localStorage.setItem('events', JSON.stringify(removido))
-            window.location.reload()
-        }
-    }
+   console.log(`mesId:${id}`)
     
     
     return(
         <>
             <div className="bg-gray-800 h-screen w-screen text-white flex flex-col">
                 <div className="mx-auto mt-10"><h1 className="text-2xl font-bold">Meus Eventos</h1></div>
-                <div className="flex  justify-center items-center mt-32"><h2 className="font-bold text-3xl">{dados.map((item) =>(
-                    <div key={item.events.id} className="flex
-                    flex-col gap-5 justify-center items-center p-3">
-                        <h1>{item.events.name}</h1>
-                        <button onClick={() => removeEvent(item.events.id)} className="bg-red-600 rounded p-2">Remover Evento</button>
-                    </div>
-                ))}</h2></div>
+                <div className="flex  justify-center items-center mt-32">
+                    {mesEncontrado.events.map((item) =>(
+                        <div>{item.name}</div>
+                    ))}
+                </div>
                 
             </div>
         </>
