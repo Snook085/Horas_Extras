@@ -21,12 +21,12 @@ const Menu = ({ currentScreen, setCurrentScreen }) => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-xl">
-      <ul className="flex justify-around p-2">
+      <ul className="flex justify-around p-4">
         {Menus.map((menu) => (
           <li key={menu.path} className="flex-1">
             <a
               className={`flex flex-col items-center transition-all duration-300 ${
-                currentScreen === menu.path ? 'text-rose-600 transform scale-110' : 'text-gray-500'
+                currentScreen === menu.path ? 'text-rose-600 transform scale-150' : 'text-gray-500'
               }`}
               onClick={() => handleMenuClick(menu.path)}
             >

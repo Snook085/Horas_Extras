@@ -68,10 +68,10 @@ function AddEvent() {
   function handleSave (e) {
     e.preventDefault()
     addEvent(nameEvent,dateEvent)
-    
-    
-    
-    console.log(nameEvent,dateEvent)
+    setSave(true)
+    setNameEvent('')
+    setDateEvent('')
+    setTimeout(() => setSave(false),2000)
     
   }
 
@@ -80,7 +80,7 @@ function AddEvent() {
     <div className='flex flex-col h-screen w-screen bg-slate-800 justify-center items-center '>
 
     
-      <div className=' bg-white  p-5  flex flex-col items-center justify-center rounded-xl shadow-xl'>
+      <div className=' bg-white  p-5  flex flex-col items-center justify-center rounded-xl shadow-xl shadow-black'>
         <h1 className=' text-2xl'>Horas extras</h1>
         <form className='mt-5 flex flex-col gap-5 items-center justify-center' onSubmit={handleSave}>
           <div className='flex flex-col gap-3'>
@@ -96,13 +96,14 @@ function AddEvent() {
             <input className='ml-3 rounded border-2 border-black h-10 w-56'
              type="date"
              value={dateEvent}
+             required
              onChange={(e) => setDateEvent(e.target.value)}
              />
           </div>
         
-            <div className='flex gap-1'>
-                <button className='text-white bg-sky-700 rounded-xl mt-4 p-2' type='submit'>Salvar Evento</button>
-                <Link className='text-white bg-sky-700 rounded-xl mt-4 p-2' type='click' to='/'>Voltar Inicio</Link>
+            <div className='flex '>
+                <button className='text-white bg-sky-700 rounded-xl shoadow-xl shadow-slate-700 mt-4 p-4' type='submit'>Salvar Evento</button>
+        
             </div>
           
         </form>
