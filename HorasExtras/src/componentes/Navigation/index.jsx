@@ -20,8 +20,8 @@ const Menu = ({ currentScreen, setCurrentScreen }) => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-xl">
-      <ul className="flex justify-around p-4">
+    <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg  rounded-t-xl">
+      <ul className="flex justify-around p-3">
         {Menus.map((menu) => (
           <li key={menu.path} className="flex-1">
             <a
