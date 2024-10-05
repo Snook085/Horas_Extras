@@ -7,10 +7,12 @@ const VerEvent = () => {
     const dados = JSON.parse(localStorage.getItem('events'));
     const mesEncontrado = dados.find(item => item.id == id);
     console.log(mesEncontrado.events)
+
     return (
         <>
+            
             <div className="bg-gray-800 h-screen w-screen  flex flex-col pb-20 justify-center items-center ">
-                
+                <h1 className="text-4xl mb-3 text-white">Eventos</h1>
                 <div className="flex justify-center items-center  w-full b rounded-xl bg-transparent shadow-xl ">
                     
                     <Swiper
