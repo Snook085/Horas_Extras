@@ -29,7 +29,7 @@ const VerEvent = () => {
                     {mesEncontrado.events.map((item) => (
                         
                         <SwiperSlide>
-                            <div className="bg-slate-200  w-full  h-96 gap-10 flex flex-col justify-center items-center rounded-xl ">
+                            <div className="bg-white  w-full  h-96 gap-10 flex flex-col justify-center items-center rounded-xl ">
                                 <h1 className="text-2xl font-bold ">{item.name}</h1>
                             <p className="text-slate-500" >Data: {item.dia}/{item.mesNumber}</p>
                             <div className="flex flex-col justify-center items-center gap-3">

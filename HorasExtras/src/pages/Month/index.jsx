@@ -33,7 +33,7 @@ const Month = () => {
         <>
         <div className="bg-gray-800 h-screen w-screen flex justify-center items-center p-3">
             
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col gap-5 w-full">
                 {mes.map((item) => {
                     let total = 0
                     item.events.forEach(event => {
