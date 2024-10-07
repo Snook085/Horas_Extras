@@ -11,7 +11,7 @@ const InicialPage = () => {
         <>
         <div className="bg-gray-800 h-screen w-screen flex flex-col justify-center items-center">
             <div className="bg-white rounded-xl shadow-xl w-72 h-72 flex flex-col justify-center items-center ">
-                <h1>Em manutenção</h1>
+                <h1>Em Desenvolvimento</h1>
             </div>
         </div>
             

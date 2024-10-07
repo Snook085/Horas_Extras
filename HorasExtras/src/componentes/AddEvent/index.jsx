@@ -63,7 +63,7 @@ function AddEvent() {
       serviços.push('Desmontagem')
     }
     if (checkboxes.plantao) {
-      total += (new Date(dateEvent).getDay() === 0 || new Date(dateEvent).getDay() === 6) ? 20 : 15;
+      total += (new Date(dateEvent).getDay() === 5 || new Date(dateEvent).getDay() === 6) ? 20 : 15;
       serviços.push('Plantão')
     } 
     if (checkboxes.virada) {

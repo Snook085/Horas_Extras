@@ -2,16 +2,17 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import home from '../../../public/home.svg'
 import albums from '../../../public/albums.svg'
-import settings from '../../../public/settings.svg'
+import user from '../../../public/user.svg'
 import addCircle from '../../../public/addCircle.svg'
 
 const Menu = ({ currentScreen, setCurrentScreen }) => {
   const navigate = useNavigate();
 
   const Menus = [
-    { name: 'Home', icon: home, path: '/' },
-    { name: 'Add Event', icon: addCircle, path: '/AddEvent' },
-    { name: 'Events', icon: albums, path: '/MesEvent' },
+    { name: 'Inicio', icon: home, path: '/' },
+    { name: 'Adicionar', icon: addCircle, path: '/AddEvent' },
+    { name: 'Eventos', icon: albums, path: '/MesEvent' },
+    { name: 'Perfil', icon: user, path: '/Perfil' }
   ];
 
   const handleMenuClick = (path) => {

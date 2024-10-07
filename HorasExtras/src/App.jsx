@@ -7,6 +7,7 @@ import VerEvent from './pages/VerEvent';
 import Menu from './componentes/Navigation';
 import { useState } from 'react';
 import Month from './pages/Month';
+import Profile from './pages/perfil';
 
 const App = () => {
   const location = useLocation(); // Usar useLocation aqui, dentro do Router
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/AddEvent' element={<AddEvent />} />
         <Route path='/MesEvent' element={<Month />} />
         <Route path='/VerEvent/:id' element={<VerEvent />} />
+        <Route path='/Perfil' element={<Profile/>} />
       </Routes>
       <Menu currentScreen={currentScreen} setCurrentScreen={setCurrentScreen} />
     </>
